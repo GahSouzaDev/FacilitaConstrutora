@@ -3,7 +3,7 @@ function createCasa1() {
         const group = new THREE.Group();
         
         // Geometria do cubo
-        const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+        const cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
         
         // Material espelhado
         const cubeMaterial = new THREE.MeshPhongMaterial({
@@ -14,7 +14,7 @@ function createCasa1() {
         
         // Cria o cubo
         const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        cube.position.set(0, 0, 0);
+        cube.position.set(4, 1, -2.5);
         group.add(cube);
         
         return group;

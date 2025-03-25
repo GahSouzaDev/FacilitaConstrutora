@@ -1,8 +1,10 @@
+// script.js
+
 // Configuração básica da cena
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight); // Ajuste inicial para toda a janela
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Controles de órbita
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -13,8 +15,12 @@ controls.dampingFactor = 0.05;
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-directionalLight.position.set(2, 4, 3);
+directionalLight.position.set(5, 4, 3);
 scene.add(directionalLight);
+
+// Adiciona o terreno à cena
+const terrain = createTerrain(); // Função definida em scene.js
+scene.add(terrain);
 
 // Variável para armazenar o modelo atual
 let currentModel = null;
@@ -28,6 +34,7 @@ function loadModel(modelName) {
     switch(modelName) {
         case 'casa1':
             currentModel = createCasa1();
+            currentModel.position.y = 0.5; // Levanta a casa para ficar sobre o chão
             break;    
     }
     
@@ -35,9 +42,8 @@ function loadModel(modelName) {
 }
 
 // Configuração inicial
-camera.position.z = 3;
-camera.position.x = 4;
-camera.position.y = 1;
+camera.position.set(16, 10, 10); // Ajustei para visualizar melhor o terreno
+camera.lookAt(0, 0, 0);
 loadModel('casa1'); // Modelo padrão
 
 // Animação
@@ -52,7 +58,7 @@ animate();
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight); // Ajusta dinamicamente
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 // Menu hamburguer
