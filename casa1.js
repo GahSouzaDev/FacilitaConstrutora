@@ -33,6 +33,26 @@ function createCasa1() {
             specular: 0xffffff, // Reflexo branco
             shininess: 100      // Brilho alto pra parecer espelho
         });
+       // Criando o material com as propriedades especificadas
+
+// Criando o carregador de texturas
+const textureLoader = new THREE.TextureLoader();
+
+// Carregando a textura (substitua 'caminho/para/sua/textura.jpg' pelo caminho real da sua imagem)
+const texture = textureLoader.load('tx-md2.png');
+
+    // Criando o material com a textura
+    const cubePortaMaterial = new THREE.MeshPhongMaterial({
+        map: texture,       // Adiciona a textura como mapa base
+        color: 0x808080,    // A cor será multiplicada pela textura
+        specular: 0xffffff, // Reflexo branco
+        shininess: 100      // Brilho alto para efeito espelhado
+    });
+
+// Configurações adicionais da textura
+texture.wrapS = THREE.RepeatWrapping;  // Repetição horizontal
+texture.wrapT = THREE.RepeatWrapping;  // Repetição vertical
+texture.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem repetição)
     
     // Cria parede 1 cozinha
         // Geometria da parede encostada no muro
@@ -147,9 +167,20 @@ function createCasa1() {
             cubeJanela8.position.set(-1.925, 1.22, 3.33);
             cubeJanela8.rotation.y = Math.PI / 2;
             cubeJanela8.rotation.x = Math.PI / 2;
+        
+    //Cria portas              
+        const cubePortaGeometry = new THREE.BoxGeometry(0.8, 2.1, 0.10);    
+        // Cria porta da frente (cozinha)
+        const cubePorta1 = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
+            cubePorta1.position.set(-1.925, 0.65, 0.95);
+            cubePorta1.rotation.y = Math.PI / 2;
+        // Cria porta da cozinha com lavanderia
+        const cubePorta2 = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
+            cubePorta2.position.set(-6.375, 0.65, 0.95);
+            cubePorta2.rotation.y = Math.PI / 2;
             
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia );
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2 );
         
         return group;
     }
