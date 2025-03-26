@@ -44,7 +44,7 @@ const texture = textureLoader.load('tx-md2.png');
     // Criando o material com a textura
     const cubePortaMaterial = new THREE.MeshPhongMaterial({
         map: texture,       // Adiciona a textura como mapa base
-        color: 0x808080,    // A cor será multiplicada pela textura
+        color: 0xD2B48C,    // A cor será multiplicada pela textura
         specular: 0xffffff, // Reflexo branco
         shininess: 100      // Brilho alto para efeito espelhado
     });
@@ -53,6 +53,25 @@ const texture = textureLoader.load('tx-md2.png');
 texture.wrapS = THREE.RepeatWrapping;  // Repetição horizontal
 texture.wrapT = THREE.RepeatWrapping;  // Repetição vertical
 texture.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem repetição)
+
+// Criando o carregador de texturas
+const texture1Loader = new THREE.TextureLoader();
+
+// Carregando a textura (substitua 'caminho/para/sua/textura.jpg' pelo caminho real da sua imagem)
+const texture1 = texture1Loader.load('tx-md1.png');
+
+    // Criando o material com a textura
+    const cubePorta1Material = new THREE.MeshPhongMaterial({
+        map: texture1,       // Adiciona a textura como mapa base
+        color: 0x808080,    // A cor será multiplicada pela textura
+        specular: 0xffffff, // Reflexo branco
+        shininess: 100      // Brilho alto para efeito espelhado
+    });
+
+// Configurações adicionais da textura
+texture1.wrapS = THREE.RepeatWrapping;  // Repetição horizontal
+texture1.wrapT = THREE.RepeatWrapping;  // Repetição vertical
+texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem repetição)
     
     // Cria parede 1 cozinha
         // Geometria da parede encostada no muro
@@ -168,8 +187,8 @@ texture.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem 
             cubeJanela8.rotation.y = Math.PI / 2;
             cubeJanela8.rotation.x = Math.PI / 2;
         
-    //Cria portas              
-        const cubePortaGeometry = new THREE.BoxGeometry(0.8, 2.1, 0.10);    
+    // Cria portas              
+        const cubePortaGeometry = new THREE.BoxGeometry(0.8, 2.1, 0.05);    
         // Cria porta da frente (cozinha)
         const cubePorta1 = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
             cubePorta1.position.set(-1.925, 0.65, 0.95);
@@ -178,9 +197,40 @@ texture.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem 
         const cubePorta2 = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
             cubePorta2.position.set(-6.375, 0.65, 0.95);
             cubePorta2.rotation.y = Math.PI / 2;
+
+    // Cria batentes
+         //Cria Batente de cima              
+         const cubePorta1Geometry = new THREE.BoxGeometry(0.8, 0.05, 0.16);          
+         const cubePorta3 = new THREE.Mesh(cubePorta1Geometry, cubePorta1Material);
+             cubePorta3.position.set(-1.925, 1.725, 0.95);
+             cubePorta3.rotation.y = Math.PI / 2;
+         // Cria Batente das laterais            
+         const cubePorta2Geometry = new THREE.BoxGeometry(0.05, 2.15, 0.16); 
+    //Cria batentes laterais da porta da frente da cozinha
+         // Cria batente esquerdo        
+         const cubePorta4 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta4.position.set(-1.925, 0.675, 1.37);
+             cubePorta4.rotation.y = Math.PI / 2;
+         // Cria batente direito        
+         const cubePorta5 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta5.position.set(-1.925, 0.675, 0.525);
+             cubePorta5.rotation.y = Math.PI / 2;
+    //Cria batentes da porta da cozinha com lavanderia
+        // Cria batente de cima
+        const cubePorta8 = new THREE.Mesh(cubePorta1Geometry, cubePorta1Material);
+            cubePorta8.position.set(-6.375, 1.725, 0.95);
+            cubePorta8.rotation.y = Math.PI / 2;
+         // Cria batente esquerdo        
+         const cubePorta6 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta6.position.set(-6.375, 0.675, 1.37);
+             cubePorta6.rotation.y = Math.PI / 2;
+         // Cria batente direito        
+         const cubePorta7 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta7.position.set(-6.375, 0.675, 0.525);
+             cubePorta7.rotation.y = Math.PI / 2;
             
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2 );
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8); 
         
         return group;
     }
