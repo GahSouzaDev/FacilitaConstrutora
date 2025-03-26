@@ -47,6 +47,22 @@ function createCasa1() {
         const cubeCozinha2 = new THREE.Mesh(cube2Geometry, cubeBaixoMaterial);
             cubeCozinha2.position.set(-6.375, 0.15, 2.4);
             cubeCozinha2.rotation.y = Math.PI / 2;
+        // Geometria da parede da esquerda da parede ca cozinha com lavanderia
+        const cube3Geometry = new THREE.BoxGeometry(0.65, 2.8, 0.15);          
+        // Cria parede 3 parte da esquerda
+        const cubeCozinha3 = new THREE.Mesh(cube3Geometry, cubeBaixoMaterial);
+            cubeCozinha3.position.set(-6.375, 1, 1.3);
+            cubeCozinha3.rotation.y = Math.PI / 2;
+        // Cria parede 4 parte da direita
+        const cubeCozinha4 = new THREE.Mesh(cube3Geometry, cubeBaixoMaterial);
+            cubeCozinha4.position.set(-6.375, 1, 3.5);
+            cubeCozinha4.rotation.y = Math.PI / 2;
+        // Geometria da parede da parte de cima da janela da parede da cozinha com lavanderia
+        const cube5Geometry = new THREE.BoxGeometry(2, 0.65, 0.15);          
+        // Cria parede 3 parte de esquerda
+        const cubeCozinha5 = new THREE.Mesh(cube5Geometry, cubeBaixoMaterial);
+            cubeCozinha5.position.set(-6.375, 2.075, 2.4);
+            cubeCozinha5.rotation.y = Math.PI / 2;
 
     // Cria vidro da parede da cozinha com a lavanderia
          // Geometria do Vidro
@@ -80,7 +96,7 @@ function createCasa1() {
             cubeJanela4.rotation.y = Math.PI / 2;
             cubeJanela4.rotation.x = Math.PI / 2;
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeVidro1, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4 );
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeVidro1, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4 );
         
         return group;
     }
