@@ -262,11 +262,11 @@ texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
           const cubeCimaPorta1Geometry = new THREE.BoxGeometry(1, 0.69, 0.15);    
           // Cria parede de cima da porta da lavanderia
           const cubeCimaPorta1 = new THREE.Mesh(cubeCimaPorta1Geometry, cubeMaterial);
-              cubeCimaPorta1.position.set(-6.375, 2.055, 1.4);
+              cubeCimaPorta1.position.set(-6.375, 2.055, 1.41);
               cubeCimaPorta1.rotation.y = Math.PI / 2;
             // Cria parede de cima da porta da lavanderia
           const cubeCimaPorta2 = new THREE.Mesh(cubeCimaPorta1Geometry, cubeMaterial);
-            cubeCimaPorta2.position.set(-1.925, 2.055, 1.4);
+            cubeCimaPorta2.position.set(-1.925, 2.055, 1.41);
             cubeCimaPorta2.rotation.y = Math.PI / 2;
     // Cria piso da cozinha
         // Geometria do piso da cozinha
