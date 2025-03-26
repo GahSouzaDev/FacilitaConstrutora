@@ -34,7 +34,7 @@ function loadModel(modelName) {
     switch(modelName) {
         case 'casa1':
             currentModel = createCasa1();
-            currentModel.position.y = 0.5; // Levanta a casa para ficar sobre o chão
+            currentModel.position.y = 0.4; // Levanta a casa para ficar sobre o chão
             break;    
     }
     
@@ -42,7 +42,7 @@ function loadModel(modelName) {
 }
 
 // Configuração inicial
-camera.position.set(16, 10, 10); // Ajustei para visualizar melhor o terreno
+camera.position.set(16, 10, -10); // Ajustei para visualizar melhor o terreno
 camera.lookAt(0, 0, 0);
 loadModel('casa1'); // Modelo padrão
 
