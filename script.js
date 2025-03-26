@@ -15,7 +15,7 @@ controls.dampingFactor = 0.05;
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-directionalLight.position.set(5, 4, 3);
+directionalLight.position.set(5, 4, -3);
 scene.add(directionalLight);
 
 // Adiciona o terreno à cena
