@@ -47,6 +47,7 @@ function createCasa1() {
         const cubeCozinha2 = new THREE.Mesh(cube2Geometry, cubeBaixoMaterial);
             cubeCozinha2.position.set(-6.375, 0.15, 2.4);
             cubeCozinha2.rotation.y = Math.PI / 2;
+    //Cria parede das laterais da janela da cozinha (parede da cozinha com lavanderia)
         // Geometria da parede da esquerda da parede ca cozinha com lavanderia
         const cube3Geometry = new THREE.BoxGeometry(0.65, 2.8, 0.15);          
         // Cria parede 3 parte da esquerda
