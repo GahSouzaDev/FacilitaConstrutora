@@ -95,6 +95,25 @@ const texture1 = texture1Loader.load('tx-md1.png');
 texture1.wrapS = THREE.RepeatWrapping;  // Repetição horizontal
 texture1.wrapT = THREE.RepeatWrapping;  // Repetição vertical
 texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem repetição)
+
+// Criando o carregador de texturas
+const texture3Loader = new THREE.TextureLoader();
+
+// Carregando a textura (substitua 'caminho/para/sua/textura.jpg' pelo caminho real da sua imagem)
+const texture3 = texture3Loader.load('JN1.png');
+
+    // Criando o material com a textura
+    const cubePortaJanelaMaterial = new THREE.MeshPhongMaterial({
+        map: texture3,       // Adiciona a textura como mapa base
+        color: 0x808080,    // A cor será multiplicada pela textura
+        specular: 0xffffff, // Reflexo branco
+        shininess: 100      // Brilho alto para efeito espelhado
+    });
+
+// Configurações adicionais da textura
+texture3.wrapS = THREE.RepeatWrapping;  // Repetição horizontal
+texture3.wrapT = THREE.RepeatWrapping;  // Repetição vertical
+texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem repetição)
     
     // Cria parede 1 cozinha
         // Geometria da parede encostada no muro
@@ -351,8 +370,26 @@ texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
         const cubeJanela10 = new THREE.Mesh(cubeJanela1Geometry, cubeBlackMaterial);
             cubeJanela10.position.set(-5.5, 1.74, -2.32);
             cubeJanela10.rotation.y = Math.PI / 1;
-
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10); 
+        //Cria moldura das laterias das janelas dos quartos
+            const cubeJanela11 = new THREE.Mesh(cubeJanela2Geometry, cubeBlackMaterial);
+            cubeJanela11.position.set(-6.25, 1.22, -2.32);
+            cubeJanela11.rotation.y = Math.PI / 1;
+            cubeJanela11.rotation.x = Math.PI / 1;  
+            cubeJanela11.rotation.z = Math.PI / 2;   
+        // Cria parte da direita (perto da porta da lavanderia)
+        const cubeJanela12 = new THREE.Mesh(cubeJanela2Geometry, cubeBlackMaterial);
+            cubeJanela12.position.set(-4.75, 1.22, -2.32);
+            cubeJanela12.rotation.y = Math.PI / 1;
+            cubeJanela12.rotation.x = Math.PI / 1;  
+            cubeJanela12.rotation.z = Math.PI / 2;      
+            
+    // Cria porta da janela do quarto
+        const cubePortaJanelaGeometry = new THREE.BoxGeometry(0.75, 1, 0.05);    
+        const cubePortaJanela = new THREE.Mesh(cubePortaJanelaGeometry, cubePortaJanelaMaterial);
+            cubePortaJanela.position.set(-5.125, 1.22, -2.32);
+            cubePortaJanela.rotation.y = Math.PI / 1;        
+            
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela); 
         
         return group;
     }
