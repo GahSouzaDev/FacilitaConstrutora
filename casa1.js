@@ -274,9 +274,23 @@ texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
         const cubePisoCozinha = new THREE.Mesh(cubePisoCozinhaGeometry, cubePisoMaterial);
             cubePisoCozinha.position.set(-4.15, -0.4, 2.37);
             cubePisoCozinha.rotation.y = Math.PI / 1;
+    //Cria piso lavanderia   
+        // Geometria do piso
+        const cubePisoLavanderiaGeometry = new THREE.BoxGeometry(1, 0.01, 1.5);      
+        const cubePisoLavanderia = new THREE.Mesh(cubePisoLavanderiaGeometry, cubePisoMaterial);
+            cubePisoLavanderia.position.set(-6.95, -0.4, 3.075);
+            cubePisoLavanderia.rotation.y = Math.PI / 1;
+
+    // Cria parede da cozinha com quarto
+        // Geometria das paredes da parte de cima das portas
+        const cubeCozinhaQuartoGeometry = new THREE.BoxGeometry(3, 2.8, 0.15);    
+        // Cria parede de cima da porta da lavanderia
+        const cubeCozinhaQuarto = new THREE.Mesh(cubeCozinhaQuartoGeometry, cubeMaterial);
+            cubeCozinhaQuarto.position.set(-5.5, 1, 0.83);
+            cubeCozinhaQuarto.rotation.y = Math.PI / 1;
             
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha); 
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto); 
         
         return group;
     }
