@@ -106,8 +106,8 @@ const texture3 = texture3Loader.load('JN1.png');
     const cubePortaJanelaMaterial = new THREE.MeshPhongMaterial({
         map: texture3,       // Adiciona a textura como mapa base
         color: 0x808080,    // A cor será multiplicada pela textura
-        specular: 0xffffff, // Reflexo branco
-        shininess: 100      // Brilho alto para efeito espelhado
+        specular: 0x000000, // Reflexo branco
+        shininess: 50      // Brilho alto para efeito espelhado
     });
 
 // Configurações adicionais da textura
@@ -387,9 +387,24 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
         const cubePortaJanelaGeometry = new THREE.BoxGeometry(0.75, 1, 0.05);    
         const cubePortaJanela = new THREE.Mesh(cubePortaJanelaGeometry, cubePortaJanelaMaterial);
             cubePortaJanela.position.set(-5.125, 1.22, -2.32);
-            cubePortaJanela.rotation.y = Math.PI / 1;        
+            cubePortaJanela.rotation.y = Math.PI / 1;   
+    
+    //Cria paredes do quarto2
+        const cubeQuartoJanela2Geometry = new THREE.BoxGeometry(2.7, 1.1, 0.15);
+        const cubeQuartoJanela2 = new THREE.Mesh(cubeQuartoJanela2Geometry, cubeMaterial);
+            cubeQuartoJanela2.position.set(-1.35, 0.15, -2.32);
+            cubeQuartoJanela2.rotation.y = Math.PI / 1;
+        //parede do quarto dois (frente da casa)
+        const cubeQuarto7 = new THREE.Mesh(cubeQuarto1Geometry, cubeMaterial);
+            cubeQuarto7.position.set(0.075, 1, -0.745);
+            cubeQuarto7.rotation.y = Math.PI / 2;
+        //Cria paredes do quarto2
+        const cubeQuarto8Geometry = new THREE.BoxGeometry(2.7, 2.8, 0.15);
+        const cubeQuarto8 = new THREE.Mesh(cubeQuarto8Geometry, cubeMaterial);
+            cubeQuarto8.position.set(-1.35, 1, 0.83);
+            cubeQuarto8.rotation.y = Math.PI / 1;
             
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela); 
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8); 
         
         return group;
     }
