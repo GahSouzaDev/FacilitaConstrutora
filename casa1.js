@@ -287,11 +287,11 @@ texture1.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
         const cubeCozinhaQuarto = new THREE.Mesh(cubeCozinhaQuartoGeometry, cubeMaterial);
             cubeCozinhaQuarto.position.set(-5.5, 1, 0.83);
             cubeCozinhaQuarto.rotation.y = Math.PI / 1;
-    // Cria parede do quarto com janela      
-        const cubeQuartoJanela1Geometry = new THREE.BoxGeometry(3.3, 1.1, 0.15);    
+    // Cria parede do quarto      
+        const cubeQuartoJanela1Geometry = new THREE.BoxGeometry(3.3, 2.8, 0.15);    
         // Cria parede de baixo da janela do quarto 
         const cubeQuartoJanela1 = new THREE.Mesh(cubeQuartoJanela1Geometry, cubeMaterial);
-            cubeQuartoJanela1.position.set(-6.925, 0.15, -0.745);
+            cubeQuartoJanela1.position.set(-6.925, 1, -0.745);
             cubeQuartoJanela1.rotation.y = Math.PI / 2;
             
 
