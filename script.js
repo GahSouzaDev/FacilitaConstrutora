@@ -42,7 +42,7 @@ function loadModel(modelName) {
 }
 
 // Configuração inicial
-camera.position.set(16, 10, 10); // Ajustei para visualizar melhor o terreno
+camera.position.set(9, 5, 5); // Ajustei para visualizar melhor o terreno
 camera.lookAt(0, 0, 0);
 loadModel('casa1'); // Modelo padrão
 
