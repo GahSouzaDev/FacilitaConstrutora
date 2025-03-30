@@ -498,7 +498,7 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubeBanheiro2.rotation.y = Math.PI / 1;
 
         //Parede das laterais da janela do banheiro
-        const cubeBanheiro3Geometry = new THREE.BoxGeometry(0.3, 3, 0.15);          
+        const cubeBanheiro3Geometry = new THREE.BoxGeometry(0.35, 3, 0.15);          
              // Cria parede de cima da janela
         const cubeBanheiro3 = new THREE.Mesh(cubeBanheiro3Geometry, cubeBaixoMaterial);
             cubeBanheiro3.position.set(-3.95, 1.1, -2.32);
