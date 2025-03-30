@@ -73,8 +73,7 @@ pisoTexture1.repeat.set(4, 4); // Quantas vezes a textura se repete (ajuste conf
 const cubePisoMaterial1 = new THREE.MeshPhongMaterial({
     map: pisoTexture1,   // Aplicar a textura
     color: 0xcccccc,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
-    specular: 0xff
-    , // Reflexo branco
+    specular: 0xffffff, // Reflexo branco
     shininess: 100      // Brilho alto pra parecer espelho
 });
        
@@ -326,7 +325,7 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubePisoCozinha.rotation.y = Math.PI / 1;
     //Cria piso lavanderia   
         // Geometria do piso
-        const cubePisoLavanderiaGeometry = new THREE.BoxGeometry(1, 0.01, 1.5);      
+        const cubePisoLavanderiaGeometry = new THREE.BoxGeometry(1, 0.011, 1.5);      
         const cubePisoLavanderia = new THREE.Mesh(cubePisoLavanderiaGeometry, cubePisoMaterial);
             cubePisoLavanderia.position.set(-6.95, -0.4, 3.075);
             cubePisoLavanderia.rotation.y = Math.PI / 1;
@@ -476,15 +475,15 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubeQuarto19.position.set(-0.3, 1.1, -2.32);
             cubeQuarto19.rotation.y = Math.PI / 1; 
     //Cria piso dos quartos 
-         // Cria piso da cozinha
-        // Geometria do piso da cozinha
+    
+        // Geometria do piso 
         const cubePisoQuartoGeometry = new THREE.BoxGeometry(2.78, 0.01, 3.25);      
         const cubePisoQuarto = new THREE.Mesh(cubePisoQuartoGeometry, cubePisoMaterial1);
             cubePisoQuarto.position.set(-1.35, -0.4, -0.75);
             cubePisoQuarto.rotation.y = Math.PI / 1;
 
     //Cria janela do banheiro
-        // Cria vidro da parede da cozinha com a lavanderia
+        
          // Geometria do Vidro
          const cubeVidro5Geometry = new THREE.BoxGeometry(0.8, 0.8, 0.01);    
          // Vidro da cozinha com lavanderia
@@ -499,10 +498,58 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubeBanheiro2.rotation.y = Math.PI / 1;
 
         //Parede das laterais da janela do banheiro
-     
+        const cubeBanheiro3Geometry = new THREE.BoxGeometry(0.3, 3, 0.15);          
+             // Cria parede de cima da janela
+        const cubeBanheiro3 = new THREE.Mesh(cubeBanheiro3Geometry, cubeBaixoMaterial);
+            cubeBanheiro3.position.set(-3.95, 1.1, -2.32);
+            cubeBanheiro3.rotation.y = Math.PI / 1;
+        const cubeBanheiro4 = new THREE.Mesh(cubeBanheiro3Geometry, cubeBaixoMaterial);
+            cubeBanheiro4.position.set(-2.85, 1.1, -2.32);
+            cubeBanheiro4.rotation.y = Math.PI / 1;
+        //Cria moldura e detalhes da janela do banheiro
+        //Molduras horizontais
+        const cubeMolduraBanheiroGeometry = new THREE.BoxGeometry(0.8, 0.05, 0.16);    
+      
+         const cubeMolduraBanheiro = new THREE.Mesh(cubeMolduraBanheiroGeometry, cubeBlackMaterial);
+            cubeMolduraBanheiro.position.set(-3.4, 2.3, -2.32);
+            cubeMolduraBanheiro.rotation.y = Math.PI / 1;
+            const cubeMolduraBanheiro1 = new THREE.Mesh(cubeMolduraBanheiroGeometry, cubeBlackMaterial);
+            cubeMolduraBanheiro1.position.set(-3.4, 1.5, -2.32);
+            cubeMolduraBanheiro1.rotation.y = Math.PI / 1;
+        //Molduras verticais
+            const cubeMolduraBanheiro2 = new THREE.Mesh(cubeMolduraBanheiroGeometry, cubeBlackMaterial);
+             cubeMolduraBanheiro2.position.set(-3.775, 1.9, -2.32);
+                cubeMolduraBanheiro2.rotation.y = Math.PI / 1;
+                cubeMolduraBanheiro2.rotation.z = Math.PI / 2;
+            const cubeMolduraBanheiro3 = new THREE.Mesh(cubeMolduraBanheiroGeometry, cubeBlackMaterial);
+                cubeMolduraBanheiro3.position.set(-3.025, 1.9, -2.32);
+                   cubeMolduraBanheiro3.rotation.y = Math.PI / 1;
+                   cubeMolduraBanheiro3.rotation.z = Math.PI / 2;
 
+//Piso do quarto1
+
+        // Geometria do piso 
+          const cubePisoQuarto1Geometry = new THREE.BoxGeometry(3.25, 0.01, 3.25);      
+          const cubePisoQuarto1 = new THREE.Mesh(cubePisoQuartoGeometry, cubePisoMaterial1);
+              cubePisoQuarto1.position.set(-5.475, -0.4, -0.75);
+              cubePisoQuarto1.rotation.y = Math.PI / 1;
+  
+//Piso do banheiro
+
+        // Geometria do piso 
+        const cubePisoBanheiroGeometry = new THREE.BoxGeometry(2.85, 0.01, 2.85);      
+        const cubePisoBanheiro = new THREE.Mesh(cubePisoBanheiroGeometry, cubePisoMaterial1);
+            cubePisoBanheiro.position.set(-3.475, -0.4, -0.95);
+            cubePisoBanheiro.rotation.y = Math.PI / 1;
+
+        //Piso do corredor
+         // Geometria do piso 
+         const cubePisoCorredorGeometry = new THREE.BoxGeometry(1.35, 0.011, 1.35);      
+         const cubePisoCorredor = new THREE.Mesh(cubePisoCorredorGeometry, cubePisoMaterial);
+             cubePisoCorredor.position.set(-3.41, -0.4, 0.25);
+            cubePisoCorredor.rotation.y = Math.PI / 1;
         
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2); 
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2, cubeBanheiro3, cubeBanheiro4, cubeMolduraBanheiro, cubeMolduraBanheiro1, cubeMolduraBanheiro2, cubeMolduraBanheiro3, cubePisoQuarto1, cubePisoBanheiro, cubePisoCorredor); 
         
         return group;
     }
