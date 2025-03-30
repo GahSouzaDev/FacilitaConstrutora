@@ -557,7 +557,7 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
               cubeCimaPorta4.position.set(-4.075, 2.155, 0.2);
               cubeCimaPorta4.rotation.y = Math.PI / 2;
     const cubeCimaPorta5 = new THREE.Mesh(cubeCimaPorta1Geometry, cubeMaterial);
-              cubeCimaPorta5.position.set(-3.35, 2.155, -0.385);
+              cubeCimaPorta5.position.set(-3.35, 2.155, -0.395);
               cubeCimaPorta5.rotation.y = Math.PI / 1;
 
     //Lateral das portas e parede do lado da porta do banheiro
@@ -569,11 +569,11 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
         cubeLadoPorta4.position.set(-4.075, 1.1, 0.75);
         cubeLadoPorta4.rotation.y = Math.PI / 2;
     const cubeLadoPorta5 = new THREE.Mesh(cubeLadoPorta3Geometry, cubeMaterial);
-        cubeLadoPorta5.position.set(-2.85, 1.1, -0.385);
+        cubeLadoPorta5.position.set(-2.85, 1.1, -0.395);
         cubeLadoPorta5.rotation.y = Math.PI / 1;
         const cubeLadoPorta6Geometry = new THREE.BoxGeometry(0.2, 3, 0.15);
     const cubeLadoPorta6 = new THREE.Mesh(cubeLadoPorta6Geometry, cubeMaterial);
-        cubeLadoPorta6.position.set(-3.95, 1.1, -0.385);
+        cubeLadoPorta6.position.set(-3.95, 1.1, -0.395);
         cubeLadoPorta6.rotation.y = Math.PI / 1;
     
         
