@@ -605,7 +605,7 @@ const cubePortaBanheiro = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
              cubePorta13.rotation.y = Math.PI / 2;
 
     //Cria batente do quarto1
-   //Cria batentes da porta da cozinha com lavanderia
+
         // Cria batente de cima
         const cubePorta14 = new THREE.Mesh(cubePorta1Geometry, cubePorta1Material);
             cubePorta14.position.set(-4.075, 1.725, 0.285);
@@ -619,7 +619,22 @@ const cubePortaBanheiro = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
              cubePorta16.position.set(-4.075, 0.675, -0.12);
              cubePorta16.rotation.y = Math.PI / 2;
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2, cubeBanheiro3, cubeBanheiro4, cubeMolduraBanheiro, cubeMolduraBanheiro1, cubeMolduraBanheiro2, cubeMolduraBanheiro3, cubePisoQuarto1, cubePisoBanheiro, cubePisoCorredor, cubeCimaPorta3, cubeCimaPorta4, cubeCimaPorta5, cubeLadoPorta3, cubeLadoPorta4, cubeLadoPorta5, cubeLadoPorta6, cubePorta9, cubePorta10, cubePortaBanheiro, cubePorta11, cubePorta12, cubePorta13, cubePorta14, cubePorta15, cubePorta16); 
+        //Cria batente do banheiro
+        // Cria batente de cima
+        const cubePorta17 = new THREE.Mesh(cubePorta1Geometry, cubePorta1Material);
+            cubePorta17.position.set(-3.32, 1.725, -0.3);
+            cubePorta17.rotation.y = Math.PI / 1;
+         // Cria batente esquerdo        
+         const cubePorta18 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta18.position.set(-3.725, 0.675, -0.3);
+             cubePorta18.rotation.y = Math.PI / 1;
+         // Cria batente direito        
+         const cubePorta19 = new THREE.Mesh(cubePorta2Geometry, cubePorta1Material);
+             cubePorta19.position.set(-2.9, 0.675, -0.3);
+             cubePorta19.rotation.y = Math.PI / 1;
+          
+
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2, cubeBanheiro3, cubeBanheiro4, cubeMolduraBanheiro, cubeMolduraBanheiro1, cubeMolduraBanheiro2, cubeMolduraBanheiro3, cubePisoQuarto1, cubePisoBanheiro, cubePisoCorredor, cubeCimaPorta3, cubeCimaPorta4, cubeCimaPorta5, cubeLadoPorta3, cubeLadoPorta4, cubeLadoPorta5, cubeLadoPorta6, cubePorta9, cubePorta10, cubePortaBanheiro, cubePorta11, cubePorta12, cubePorta13, cubePorta14, cubePorta15, cubePorta16, cubePorta17, cubePorta18, cubePorta19); 
         
         return group;
     }
