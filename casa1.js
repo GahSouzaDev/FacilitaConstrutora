@@ -53,7 +53,7 @@ pisoTexture.repeat.set(4, 4); // Quantas vezes a textura se repete (ajuste confo
 // Criar o material com a textura
 const cubePisoMaterial = new THREE.MeshPhongMaterial({
     map: pisoTexture,   // Aplicar a textura
-    color: 0xaaaaaa,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
+    color: 0xcccccc,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
     specular: 0xffffff, // Reflexo branco
     shininess: 100      // Brilho alto pra parecer espelho
 });
@@ -72,8 +72,9 @@ pisoTexture1.repeat.set(4, 4); // Quantas vezes a textura se repete (ajuste conf
 // Criar o material com a textura
 const cubePisoMaterial1 = new THREE.MeshPhongMaterial({
     map: pisoTexture1,   // Aplicar a textura
-    color: 0xaaaaaa,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
-    specular: 0xffffff, // Reflexo branco
+    color: 0xcccccc,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
+    specular: 0xff
+    , // Reflexo branco
     shininess: 100      // Brilho alto pra parecer espelho
 });
        
