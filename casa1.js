@@ -57,6 +57,25 @@ const cubePisoMaterial = new THREE.MeshPhongMaterial({
     specular: 0xffffff, // Reflexo branco
     shininess: 100      // Brilho alto pra parecer espelho
 });
+
+//Cria textura pisos dos quartos
+const texture4Loader = new THREE.TextureLoader();
+
+// Carregar a textura (substitua 'caminho/para/sua/textura.jpg' pelo caminho real da sua textura)
+const pisoTexture1 = texture4Loader.load('piso-quarto.png');
+
+// Configurar propriedades da textura (opcionais)
+pisoTexture1.wrapS = THREE.RepeatWrapping; // Repetir textura no eixo S
+pisoTexture1.wrapT = THREE.RepeatWrapping; // Repetir textura no eixo T
+pisoTexture1.repeat.set(4, 4); // Quantas vezes a textura se repete (ajuste conforme necessário)
+
+// Criar o material com a textura
+const cubePisoMaterial1 = new THREE.MeshPhongMaterial({
+    map: pisoTexture1,   // Aplicar a textura
+    color: 0xaaaaaa,    // Cor base (vai tingir a textura, use 0xffffff se quiser a cor original da textura)
+    specular: 0xffffff, // Reflexo branco
+    shininess: 100      // Brilho alto pra parecer espelho
+});
        
 // Criando o carregador de texturas
 const textureLoader = new THREE.TextureLoader();
@@ -349,6 +368,7 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubeQuarto3.position.set(-2.75, 1, -1.345);
             cubeQuarto3.rotation.y = Math.PI / 2;
 
+//----------------------Quarto----------------------
      // Cria parede das laterais da janela dos quartos
         const cubeQuarto4Geometry = new THREE.BoxGeometry(0.75, 2.8, 0.15);    
         // lateral esquerda quato 1
@@ -408,9 +428,9 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
             cubeQuarto7.position.set(0.075, 1, -0.745);
             cubeQuarto7.rotation.y = Math.PI / 2;
         //Cria paredes do quarto2
-        const cubeQuarto8Geometry = new THREE.BoxGeometry(2.7, 2.8, 0.15);
+        const cubeQuarto8Geometry = new THREE.BoxGeometry(2.85, 2.8, 0.15);
         const cubeQuarto8 = new THREE.Mesh(cubeQuarto8Geometry, cubeMaterial);
-            cubeQuarto8.position.set(-1.35, 1, 0.83);
+            cubeQuarto8.position.set(-1.4, 1, 0.83);
             cubeQuarto8.rotation.y = Math.PI / 1;
         //Vidro do quarto dois
         const cubeVidro4 = new THREE.Mesh(cubeVidro1Geometry, cubeVidroMaterial);
@@ -438,9 +458,32 @@ texture3.repeat.set(1, 1);              // Quantidade de repetições (1x1 = sem
              cubeJanela16.rotation.z = Math.PI / 2; 
         const cubePortaJanela1 = new THREE.Mesh(cubePortaJanelaGeometry, cubePortaJanelaMaterial);
              cubePortaJanela1.position.set(-1.71, 1.22, -2.32);
-             cubePortaJanela1.rotation.y = Math.PI / 1; 
+             cubePortaJanela1.rotation.y = Math.PI / 1;
         
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1); 
+        //Parte de cima da janela 
+        const cubeQuarto17 = new THREE.Mesh(cubeQuarto6Geometry, cubeMaterial);
+             cubeQuarto17.position.set(-1.35, 2.075, -2.32);
+             cubeQuarto17.rotation.y = Math.PI / 1; 
+        //Laterais da janela do quarto da frente da casa
+        const cubeQuarto18Geometry = new THREE.BoxGeometry(0.6, 2.8, 0.15);    
+        // lateral esquerda quato 1
+        const cubeQuarto18 = new THREE.Mesh(cubeQuarto18Geometry, cubeMaterial);
+            cubeQuarto18.position.set(-2.38, 1, -2.32);
+            cubeQuarto18.rotation.y = Math.PI / 1;  
+        // lateral direita quato 1
+        const cubeQuarto19 = new THREE.Mesh(cubeQuarto18Geometry, cubeMaterial);
+            cubeQuarto19.position.set(-0.3, 1, -2.32);
+            cubeQuarto19.rotation.y = Math.PI / 1; 
+    //Cria piso dos quartos 
+         // Cria piso da cozinha
+        // Geometria do piso da cozinha
+        const cubePisoQuartoGeometry = new THREE.BoxGeometry(2.78, 0.01, 3.25);      
+        const cubePisoQuarto = new THREE.Mesh(cubePisoQuartoGeometry, cubePisoMaterial1);
+            cubePisoQuarto.position.set(-1.35, -0.4, -0.75);
+            cubePisoQuarto.rotation.y = Math.PI / 1;
+
+        
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto); 
         
         return group;
     }
