@@ -27,7 +27,15 @@ function createTelhado() {
     // Cumeeira (viga central no topo)
     const vigaGeometry = new THREE.BoxGeometry(0.2, 0.2, 6.7);
     const cumeeira = new THREE.Mesh(vigaGeometry, madeiraMaterial);
-    cumeeira.position.set(-3.4, 4.65, 0.75);
+    
+    // Ajuste da altura da cumeeira proporcional à nova inclinação
+    const novaInclinacao = Math.PI / 10; // 18 graus
+    const baseCaibro = 4.4; // Comprimento do caibro esquerdo
+    const alturaOriginal = baseCaibro * Math.sin(Math.PI / 6); // Altura com 30 graus
+    const novaAltura = baseCaibro * Math.sin(novaInclinacao); // Altura com 18 graus
+    const diferencaAltura = alturaOriginal - novaAltura;
+
+    cumeeira.position.set(-3.4, 4.7 - diferencaAltura, 0.75); // Ajuste da altura
     telhadoGroup.add(cumeeira);
 
     // Caibros existentes (vigas inclinadas)
@@ -41,36 +49,35 @@ function createTelhado() {
         const zPos = -2.55 + (i * 0.6);
 
         // Caibro esquerdo
-        caibroEsq.position.set(-5.35, 3.6, zPos);
-        caibroEsq.rotation.z = Math.PI / 6;
+        caibroEsq.position.set(-5.45, 3.65 - diferencaAltura / 2, zPos); // Ajuste proporcional
+        caibroEsq.rotation.z = novaInclinacao; // Nova inclinação
         telhadoGroup.add(caibroEsq);
 
         // Caibro direito
-        caibroDir.position.set(-1.45, 3.6, zPos);
-        caibroDir.rotation.z = -Math.PI / 6;
+        caibroDir.position.set(-1.35, 3.65 - diferencaAltura / 2, zPos); // Ajuste proporcional
+        caibroDir.rotation.z = -novaInclinacao; // Nova inclinação
         telhadoGroup.add(caibroDir);
     }
 
     // Novos caibros (5 adicionais com tamanhos diferentes)
-    const caibroEsqGeometry = new THREE.BoxGeometry(4.4, 0.1, 0.1); // Tamanho maior para caibros esquerdos
-    const caibroDirGeometry = new THREE.BoxGeometry(3.8, 0.1, 0.1); // Tamanho menor para caibros direitos
+    const caibroEsqGeometry = new THREE.BoxGeometry(4.4, 0.1, 0.1);
+    const caibroDirGeometry = new THREE.BoxGeometry(3, 0.1, 0.1);
     const numNovosCaibros = 5;
 
     for (let i = 1; i <= numNovosCaibros; i++) {
         const caibroEsq = new THREE.Mesh(caibroEsqGeometry, madeiraMaterial);
         const caibroDir = new THREE.Mesh(caibroDirGeometry, madeiraMaterial);
         
-        // Posicionamento começando após os caibros existentes
-        const zPos = 1.05 + (i * 0.6); // Começa após o último caibro existente (1.8 = -2.4 + 7 * 0.6)
+        const zPos = 1.05 + (i * 0.6);
 
         // Caibro esquerdo
-        caibroEsq.position.set(-5.35, 3.6, zPos);
-        caibroEsq.rotation.z = Math.PI / 6;
+        caibroEsq.position.set(-5.45, 3.65 - diferencaAltura / 2, zPos);
+        caibroEsq.rotation.z = novaInclinacao;
         telhadoGroup.add(caibroEsq);
 
         // Caibro direito
-        caibroDir.position.set(-1.75, 3.75, zPos);
-        caibroDir.rotation.z = -Math.PI / 6;
+        caibroDir.position.set(-1.9, 3.83 - diferencaAltura / 2, zPos);
+        caibroDir.rotation.z = -novaInclinacao;
         telhadoGroup.add(caibroDir);
     }
 
@@ -78,18 +85,18 @@ function createTelhado() {
     const telhaGeometry = new THREE.PlaneGeometry(3.7, 4.5);
 
     const telhaEsq = new THREE.Mesh(telhaGeometry, telhaMaterial);
-    telhaEsq.position.set(-5.35, 3.7, -0.75);
-    telhaEsq.rotation.z = Math.PI / 2; 
-    telhaEsq.rotation.x = Math.PI / 2;  
-    telhaEsq.rotation.y = Math.PI / 6;
+    telhaEsq.position.set(-5.5, 3.73 - diferencaAltura / 2, -0.75);
+    telhaEsq.rotation.z = Math.PI / 2;
+    telhaEsq.rotation.x = Math.PI / 2;
+    telhaEsq.rotation.y = novaInclinacao; // Nova inclinação
     
     telhadoGroup.add(telhaEsq);
 
     const telhaDir = new THREE.Mesh(telhaGeometry, telhaMaterial);
-    telhaDir.position.set(-1.45, 3.7, -0.75);
+    telhaDir.position.set(-1.3, 3.73 - diferencaAltura / 2, -0.75);
     telhaDir.rotation.z = Math.PI / 2;
     telhaDir.rotation.x = Math.PI / 2;
-    telhaDir.rotation.y = -Math.PI / 6;
+    telhaDir.rotation.y = -novaInclinacao; // Nova inclinação
     telhadoGroup.add(telhaDir);
 
     return telhadoGroup;
