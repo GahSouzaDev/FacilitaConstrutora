@@ -22,23 +22,36 @@ scene.add(directionalLight);
 const terrain = createTerrain(); // Função definida em scene.js
 scene.add(terrain);
 
-// Variável para armazenar o modelo atual
+// Variáveis para armazenar o modelo e o telhado
 let currentModel = null;
+let currentTelhado = null;
 
-// Função para carregar modelo
+// Função para carregar modelo e telhado
 function loadModel(modelName) {
+    // Remove o modelo e telhado anteriores, se existirem
     if (currentModel) {
         scene.remove(currentModel);
+    }
+    if (currentTelhado) {
+        scene.remove(currentTelhado);
     }
     
     switch(modelName) {
         case 'casa1':
-            currentModel = createCasa1();
+            currentModel = createCasa1(); // Função de casa1.js
             currentModel.position.y = 0.4; // Levanta a casa para ficar sobre o chão
+            currentTelhado = createTelhado(); // Função de telhado.js
+            currentTelhado.position.y = 0.4; // Alinha o telhado com a casa
             break;    
     }
     
-    scene.add(currentModel);
+    // Adiciona ambos à cena
+    if (currentModel) {
+        scene.add(currentModel);
+    }
+    if (currentTelhado) {
+        scene.add(currentTelhado);
+    }
 }
 
 // Configuração inicial
@@ -77,3 +90,16 @@ menuItems.forEach(item => {
         menu.classList.remove('active');
     });
 });
+
+// Controle do telhado
+const toggleTelhadoBtn = document.getElementById('toggle-telhado');
+if (toggleTelhadoBtn) {
+    toggleTelhadoBtn.addEventListener('click', () => {
+        if (currentTelhado) {
+            currentTelhado.visible = !currentTelhado.visible;
+            toggleTelhadoBtn.textContent = currentTelhado.visible ? 'Esconder Telhado' : 'Mostrar Telhado';
+        }
+    });
+    // Texto inicial do botão
+    toggleTelhadoBtn.textContent = 'Esconder Telhado';
+}
