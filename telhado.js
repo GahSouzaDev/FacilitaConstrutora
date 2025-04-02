@@ -13,7 +13,7 @@ function createTelhado() {
     const telhaTexture = textureLoader.load('telhado.png');
     telhaTexture.wrapS = THREE.RepeatWrapping;
     telhaTexture.wrapT = THREE.RepeatWrapping;
-    telhaTexture.repeat.set(0.5, 1);
+    telhaTexture.repeat.set(1, 1);
 
     // Material das telhas cerâmicas com textura
     const telhaMaterial = new THREE.MeshPhongMaterial({
@@ -61,7 +61,7 @@ function createTelhado() {
 
     // Novos caibros (5 adicionais com tamanhos diferentes)
     const caibroEsqGeometry = new THREE.BoxGeometry(4.4, 0.1, 0.1);
-    const caibroDirGeometry = new THREE.BoxGeometry(3, 0.1, 0.1);
+    const caibroDirGeometry = new THREE.BoxGeometry(2.9, 0.1, 0.1);
     const numNovosCaibros = 5;
 
     for (let i = 1; i <= numNovosCaibros; i++) {
@@ -76,7 +76,7 @@ function createTelhado() {
         telhadoGroup.add(caibroEsq);
 
         // Caibro direito
-        caibroDir.position.set(-1.9, 3.83 - diferencaAltura / 2, zPos);
+        caibroDir.position.set(-1.94, 3.85 - diferencaAltura / 2, zPos);
         caibroDir.rotation.z = -novaInclinacao;
         telhadoGroup.add(caibroDir);
     }
