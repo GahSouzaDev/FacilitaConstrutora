@@ -9,11 +9,31 @@ function createCasa1() {
             shininess: 100      // Brilho alto pra parecer espelho
         });
         // Material da parede metade cima
-        const cubeCimaMaterial = new THREE.MeshPhongMaterial({
-            color: 0xffffff,    // Cor base branca
-            specular: 0xffffff, // Reflexo branco
-            shininess: 100      // Brilho alto pra parecer espelho
-        });
+      
+// Adicionar no início da função, junto com os outros loaders de textura
+const knobTextureLoader = new THREE.TextureLoader();
+const knobTexture = knobTextureLoader.load('fechadura.jpg'); // Substitua pelo caminho da sua textura
+
+// Material para maçanetas externas
+const knobMaterialOutside = new THREE.MeshPhongMaterial({
+    map: knobTexture,
+    color: 0x808080,    // Cor cinza metálica
+    specular: 0xffffff,
+    shininess: 100
+});
+
+// Material para maçanetas internas (textura invertida)
+const knobTextureInside = knobTextureLoader.load('fechadura.jpg');
+knobTextureInside.wrapS = THREE.RepeatWrapping;
+knobTextureInside.repeat.x = -1; // Inverte a textura horizontalmente
+
+const knobMaterialInside = new THREE.MeshPhongMaterial({
+    map: knobTextureInside,
+    color: 0x808080,
+    specular: 0xffffff,
+    shininess: 100
+});
+
         // Material da parede metade baixo
         const cubeBaixoMaterial = new THREE.MeshPhongMaterial({
             color: 0xffffff,    // Cor base branca
@@ -633,8 +653,62 @@ const cubePortaBanheiro = new THREE.Mesh(cubePortaGeometry, cubePortaMaterial);
              cubePorta19.position.set(-2.9, 0.675, -0.3);
              cubePorta19.rotation.y = Math.PI / 1;
           
+// Geometria da maçaneta (cubo)
+const knobGeometry = new THREE.BoxGeometry(0.1, 0.2, 0.01);
 
-        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2, cubeBanheiro3, cubeBanheiro4, cubeMolduraBanheiro, cubeMolduraBanheiro1, cubeMolduraBanheiro2, cubeMolduraBanheiro3, cubePisoQuarto1, cubePisoBanheiro, cubePisoCorredor, cubeCimaPorta3, cubeCimaPorta4, cubeCimaPorta5, cubeLadoPorta3, cubeLadoPorta4, cubeLadoPorta5, cubeLadoPorta6, cubePorta9, cubePorta10, cubePortaBanheiro, cubePorta11, cubePorta12, cubePorta13, cubePorta14, cubePorta15, cubePorta16, cubePorta17, cubePorta18, cubePorta19); 
+// Função para criar maçanetas para uma porta
+function createDoorKnobs(doorX, doorY, doorZ, rotationY) {
+    // Maçaneta externa
+    const knobOutside = new THREE.Mesh(knobGeometry, knobMaterialOutside);
+    knobOutside.position.set(
+        doorX + (rotationY === Math.PI / 2 ? 0.03 : 0),
+        doorY + 0.3,
+        doorZ + (rotationY === Math.PI / 2 ? 0 : 0.03)
+    );
+    knobOutside.rotation.y = rotationY;
+
+    // Maçaneta interna (oposta à externa)
+    const knobInside = new THREE.Mesh(knobGeometry, knobMaterialInside);
+    knobInside.position.set(
+        doorX - (rotationY === Math.PI / 2 ? 0.03 : 0),
+        doorY + 0.3,
+        doorZ - (rotationY === Math.PI / 2 ? 0 : 0.03)
+    );
+    knobInside.rotation.y = rotationY;
+
+    return [knobOutside, knobInside];
+}
+
+// Criar maçanetas para todas as 5 portas
+// 1. Porta da frente (cozinha)
+const [knob1Outside, knob1Inside] = createDoorKnobs(-1.925, 0.45, 1.7, Math.PI / 2);
+
+// 2. Porta cozinha-lavanderia
+const [knob2Outside, knob2Inside] = createDoorKnobs(-6.375, 0.45, 1.7, Math.PI / 2);
+
+// 3. Porta quarto 1
+const [knob3Outside, knob3Inside] = createDoorKnobs(-4.075, 0.45, 0.585, Math.PI / 2);
+
+// 4. Porta quarto 2
+const [knob4Outside, knob4Inside] = createDoorKnobs(-2.75, 0.45, 0.585, Math.PI / 2);
+
+// 5. Porta banheiro (invertida: interna vira externa, externa vira interna)
+const knob5OutsideTemp = new THREE.Mesh(knobGeometry, knobMaterialInside); // Normalmente interna
+knob5OutsideTemp.position.set(-3.02 + 0, 0.45 + 0.3, -0.3 + 0.06); // Posição externa
+knob5OutsideTemp.rotation.y = Math.PI / 1;
+
+const knob5InsideTemp = new THREE.Mesh(knobGeometry, knobMaterialOutside); // Normalmente externa
+knob5InsideTemp.position.set(-3.12 - 0, 0.45 + 0.3, -0.3 - 0.06); // Posição interna
+knob5InsideTemp.rotation.y = Math.PI / 1;
+
+const knob5Outside = knob5OutsideTemp;
+const knob5Inside = knob5InsideTemp;
+
+        group.add(cubeCozinha1,cubeCozinha2, cubeCozinha3, cubeCozinha4, cubeCozinha5, cubeCozinha6, cubeCozinha7, cubeCozinha8, cubeCozinha9,     cubeVidro1, cubeVidro2, cubeJanela1, cubeJanela2, cubeJanela3, cubeJanela4, cubeJanela5, cubeJanela6, cubeJanela7, cubeJanela8, cubeLavanderia, cubePorta1, cubePorta2, cubePorta3, cubePorta4, cubePorta5, cubePorta6, cubePorta7, cubePorta8, cubeLadoPorta1, cubeLadoPorta2, cubeCimaPorta1, cubeCimaPorta2, cubePisoCozinha,      cubePisoLavanderia, cubeCozinhaQuarto, cubeQuarto1, cubeQuartoJanela1, cubeQuarto2, cubeQuarto3, cubeBanheiroJanela, cubeQuarto4, cubeQuarto5, cubeVidro3, cubeQuarto6, cubeJanela9, cubeJanela10, cubeJanela11, cubeJanela12, cubePortaJanela, cubeQuartoJanela2, cubeQuarto7, cubeQuarto8, cubeVidro4, cubeJanela13, cubeJanela14, cubeJanela15, cubeJanela16, cubePortaJanela1, cubeQuarto17, cubeQuarto18, cubeQuarto19, cubePisoQuarto, cubeVidro5, cubeBanheiro2, cubeBanheiro3, cubeBanheiro4, cubeMolduraBanheiro, cubeMolduraBanheiro1, cubeMolduraBanheiro2, cubeMolduraBanheiro3, cubePisoQuarto1, cubePisoBanheiro, cubePisoCorredor, cubeCimaPorta3, cubeCimaPorta4, cubeCimaPorta5, cubeLadoPorta3, cubeLadoPorta4, cubeLadoPorta5, cubeLadoPorta6, cubePorta9, cubePorta10, cubePortaBanheiro, cubePorta11, cubePorta12, cubePorta13, cubePorta14, cubePorta15, cubePorta16, cubePorta17, cubePorta18, cubePorta19,   knob1Outside, knob1Inside,
+            knob2Outside, knob2Inside,
+            knob3Outside, knob3Inside,
+            knob4Outside, knob4Inside,
+            knob5Outside, knob5Inside); 
         
         return group;
     }
