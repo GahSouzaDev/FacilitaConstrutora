@@ -29,7 +29,7 @@ function createTelhado() {
      const telha1Texture = texture1Loader.load('telhado.png');
      telha1Texture.wrapS = THREE.RepeatWrapping;
      telha1Texture.wrapT = THREE.RepeatWrapping;
-     telha1Texture.repeat.set(0.9, 1);
+     telha1Texture.repeat.set(0.81, 1);
  
      // Material das telhas cerâmicas com textura
      const telha1Material = new THREE.MeshPhongMaterial({
@@ -39,6 +39,22 @@ function createTelhado() {
          shininess: 5,
          side: THREE.DoubleSide
      });
+
+        // Carregar textura para as telhas
+        const texture2Loader = new THREE.TextureLoader();
+        const telha2Texture = texture1Loader.load('telhado.png');
+        telha2Texture.wrapS = THREE.RepeatWrapping;
+        telha2Texture.wrapT = THREE.RepeatWrapping;
+        telha2Texture.repeat.set(0.81, 0.65);
+    
+        // Material das telhas cerâmicas com textura
+        const telha2Material = new THREE.MeshPhongMaterial({
+            map: telha2Texture,
+            color: 0xB22222,
+            specular: 0x222222,
+            shininess: 5,
+            side: THREE.DoubleSide
+        });
 
     // Cumeeira (viga central no topo)
     const vigaGeometry = new THREE.BoxGeometry(0.2, 0.2, 6.7);
@@ -118,8 +134,13 @@ function createTelhado() {
     telhaDir.rotation.z = Math.PI / 2;
     telhaDir.rotation.x = Math.PI / 2;
     telhaDir.rotation.y = -novaInclinacao; // Nova inclinação
- 
-    telhadoGroup.add(telhaDir);
+    const telha2Geometry = new THREE.PlaneGeometry(3, 3.05);
+    const telhaDir1 = new THREE.Mesh(telha2Geometry, telha2Material);
+    telhaDir1.position.set(-1.99, 3.955 - diferencaAltura / 2, 2.59);
+    telhaDir1.rotation.z = Math.PI / 2;
+    telhaDir1.rotation.x = Math.PI / 2;
+    telhaDir1.rotation.y = -novaInclinacao; // Nova inclinação
+    telhadoGroup.add(telhaDir, telhaDir1);
 
     return telhadoGroup;
 }
