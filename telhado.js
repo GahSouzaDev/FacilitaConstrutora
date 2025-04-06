@@ -18,7 +18,7 @@ function createTelhado() {
     // Material das telhas cerâmicas com textura
     const telhaMaterial = new THREE.MeshPhongMaterial({
         map: telhaTexture,
-        color: 0xB22222,
+        color: 0xFFA07A,
         specular: 0x222222,
         shininess: 5,
         side: THREE.DoubleSide
@@ -34,7 +34,7 @@ function createTelhado() {
      // Material das telhas cerâmicas com textura
      const telha1Material = new THREE.MeshPhongMaterial({
          map: telha1Texture,
-         color: 0xB22222,
+         color: 0xFFA07A,
          specular: 0x222222,
          shininess: 5,
          side: THREE.DoubleSide
@@ -50,7 +50,7 @@ function createTelhado() {
         // Material das telhas cerâmicas com textura
         const telha2Material = new THREE.MeshPhongMaterial({
             map: telha2Texture,
-            color: 0xB22222,
+            color: 0xFFA07A,
             specular: 0x222222,
             shininess: 5,
             side: THREE.DoubleSide
@@ -141,6 +141,39 @@ function createTelhado() {
     telhaDir1.rotation.x = Math.PI / 2;
     telhaDir1.rotation.y = -novaInclinacao; // Nova inclinação
     telhadoGroup.add(telhaDir, telhaDir1);
+
+
+    //Cria laje
+    const cubeMaterial = new THREE.MeshPhongMaterial({
+        color: 0xffffff,    // Cor base branca
+        specular: 0xffffff, // Reflexo branco
+        shininess: 100      // Brilho alto pra parecer espelho
+    });
+    //laje do quarto do fundo
+    const cubeGeometry = new THREE.BoxGeometry(3.1, 3, 0.1);
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.position.set(-5.5, 2.55 , -0.75); 
+    cube.rotation.z = Math.PI / 2;
+    cube.rotation.x = Math.PI / 2;
+    //laje do banheiro
+    const cube1Geometry = new THREE.BoxGeometry(3.21, 3, 0.1);
+    const cube1 = new THREE.Mesh(cube1Geometry, cubeMaterial);
+    cube1.position.set(-3.5, 2.55 , -0.70); 
+    cube1.rotation.z = Math.PI / 2;
+    cube1.rotation.x = Math.PI / 2;
+    //laje do quarto da frente
+    
+    const cube2 = new THREE.Mesh(cube1Geometry, cubeMaterial);
+    cube2.position.set(-1.5, 2.55 , -0.70); 
+    cube2.rotation.z = Math.PI / 2;
+    cube2.rotation.x = Math.PI / 2;
+    //laja da cozinha
+    const cube2Geometry = new THREE.BoxGeometry(3.1, 4.5, 0.1);
+    const cube3 = new THREE.Mesh(cube2Geometry, cubeMaterial);
+    cube3.position.set(-4.2, 2.55 , 2.3); 
+    cube3.rotation.z = Math.PI / 2;
+    cube3.rotation.x = Math.PI / 2;
+   telhadoGroup.add(cube, cube1, cube2, cube3);
 
     return telhadoGroup;
 }
