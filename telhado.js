@@ -108,26 +108,26 @@ function createTelhado() {
     const telhaGeometry = new THREE.PlaneGeometry(3.7, 4.5);
 
     const telhaEsq = new THREE.Mesh(telhaGeometry, telhaMaterial);
-    telhaEsq.position.set(-5.5, 3.73 - diferencaAltura / 2, -0.75);
+    telhaEsq.position.set(-5.54, 3.73 - diferencaAltura / 2, -0.75);
     telhaEsq.rotation.z = Math.PI / 2;
     telhaEsq.rotation.x = Math.PI / 2;
     telhaEsq.rotation.y = novaInclinacao;
     const telha1Geometry = new THREE.PlaneGeometry(3, 4.5);
     const telhaEsq1 = new THREE.Mesh(telha1Geometry, telha1Material);
-    telhaEsq1.position.set(-5.5, 3.73 - diferencaAltura / 2, 2.6);
+    telhaEsq1.position.set(-5.54, 3.73 - diferencaAltura / 2, 2.6);
     telhaEsq1.rotation.z = Math.PI / 2;
     telhaEsq1.rotation.x = Math.PI / 2;
     telhaEsq1.rotation.y = novaInclinacao;
     telhadoGroup.add(telhaEsq, telhaEsq1);
 
     const telhaDir = new THREE.Mesh(telhaGeometry, telhaMaterial);
-    telhaDir.position.set(-1.3, 3.73 - diferencaAltura / 2, -0.75);
+    telhaDir.position.set(-1.26, 3.73 - diferencaAltura / 2, -0.75);
     telhaDir.rotation.z = Math.PI / 2;
     telhaDir.rotation.x = Math.PI / 2;
     telhaDir.rotation.y = -novaInclinacao;
     const telha2Geometry = new THREE.PlaneGeometry(3, 3.05);
     const telhaDir1 = new THREE.Mesh(telha2Geometry, telha2Material);
-    telhaDir1.position.set(-1.99, 3.955 - diferencaAltura / 2, 2.59);
+    telhaDir1.position.set(-1.95, 3.955 - diferencaAltura / 2, 2.59);
     telhaDir1.rotation.z = Math.PI / 2;
     telhaDir1.rotation.x = Math.PI / 2;
     telhaDir1.rotation.y = -novaInclinacao;
@@ -378,15 +378,15 @@ function createTelhado() {
         const painel2 = createPainelSolar();
         const painel3 = createPainelSolar();
     
-        painel1.position.set(-1.9, 3.54, -1);
+        painel1.position.set(-1.9, 3.55, -1);
         painel1.rotation.x = Math.PI /2;   
         painel1.rotation.y = Math.PI /-10;    
     
-        painel2.position.set(-1.9, 3.54, 0.5);
+        painel2.position.set(-1.9, 3.55, 0.5);
         painel2.rotation.x = Math.PI /2;   
         painel2.rotation.y = Math.PI /-10;    
     
-        painel3.position.set(-1.9, 3.54, 2);
+        painel3.position.set(-1.9, 3.55, 2);
         painel3.rotation.x = Math.PI /2;   
         painel3.rotation.y = Math.PI /-10;    
     
