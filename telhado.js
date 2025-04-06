@@ -293,6 +293,7 @@ function createTelhado() {
     cube26.position.set(-3.45, 3.4 , -2.32); 
     cube26.rotation.z = Math.PI / 2;
     cube26.rotation.x = Math.PI / 2;
+  
     
    telhadoGroup.add(cube, cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12, cube13, cube14,cube15, cube16, cube17, cube18, cube19, cube20, cube21, cube22, cube23, cube24, cube25, cube26);
 
