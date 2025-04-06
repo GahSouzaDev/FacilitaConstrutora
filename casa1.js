@@ -698,7 +698,7 @@ knob5OutsideTemp.position.set(-3.02 + 0, 0.45 + 0.3, -0.3 + 0.06); // Posição 
 knob5OutsideTemp.rotation.y = Math.PI / 1;
 
 const knob5InsideTemp = new THREE.Mesh(knobGeometry, knobMaterialOutside); // Normalmente externa
-knob5InsideTemp.position.set(-3.12 - 0, 0.45 + 0.3, -0.3 - 0.06); // Posição interna
+knob5InsideTemp.position.set(-3.02 - 0, 0.45 + 0.3, -0.3 - 0.06); // Posição interna
 knob5InsideTemp.rotation.y = Math.PI / 1;
 
 const knob5Outside = knob5OutsideTemp;
