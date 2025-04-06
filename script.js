@@ -6,6 +6,36 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+// Adiciona o céu com gradiente no eixo Y (cima para baixo)
+const skyGeometry = new THREE.SphereGeometry(500, 32, 32); // Esfera grande para simular o céu
+const skyMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+        lightBlue: { value: new THREE.Color(0x87CEEB) }, // Azul claro no topo
+        darkBlue: { value: new THREE.Color(0x1E90FF) }, // Azul mais escuro na base
+    },
+    vertexShader: `
+        varying vec3 vWorldPosition;
+        void main() {
+            vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        uniform vec3 lightBlue;
+        uniform vec3 darkBlue;
+        varying vec3 vWorldPosition;
+        void main() {
+            // Normaliza a coordenada Y para o intervalo [0, 1]
+            float yNormalized = (vWorldPosition.y + 500.0) / 1000.0; // Ajusta com base no raio da esfera (500)
+            vec3 color = mix(darkBlue, lightBlue, yNormalized);
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `,
+    side: THREE.BackSide // Renderiza o lado interno da esfera
+});
+const sky = new THREE.Mesh(skyGeometry, skyMaterial);
+scene.add(sky);
+
 // Controles de órbita
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
